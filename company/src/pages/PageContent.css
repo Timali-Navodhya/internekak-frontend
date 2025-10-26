@@ -1,0 +1,210 @@
+/* src/pages/PageContent.css */
+
+/* --- General Page Styles --- */
+.page-container {
+  background-color: #ffffff;
+  padding: 20px 30px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.page-header {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+  margin-top: 0;
+  margin-bottom: 25px;
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 10px;
+}
+
+/* --- Form Styles (for Support, Post Vacancy, etc.) --- */
+.form-layout {
+  max-width: 700px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #555;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box; /* Important */
+  font-size: 1rem;
+}
+
+.form-group textarea {
+  min-height: 150px;
+  font-family: Arial, sans-serif;
+}
+
+.form-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.form-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  background-color: #3b5998; /* Primary blue */
+  color: white;
+}
+
+.form-button.secondary {
+  background-color: #8b9dc3; /* Lighter blue */
+}
+
+.form-button:hover {
+  opacity: 0.9;
+}
+
+.error-message {
+  color: #e74c3c;
+  font-size: 0.9rem;
+  margin-top: 5px;
+}
+
+.required-indicator {
+  color: #e74c3c;
+  margin-left: 5px;
+}
+
+/* Add this to src/pages/PageContent.css */
+
+.form-group .form-select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 1rem;
+  background-color: white; /* Ensures it's not transparent */
+}
+
+/* --- Styles for Application List --- */
+
+.application-list-container {
+  max-width: 800px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.application-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.application-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.application-item:last-child {
+  border-bottom: none;
+}
+
+.applicant-name {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.application-date {
+  font-size: 1rem;
+  color: #666;
+}
+
+/* New style for a smaller button */
+.form-button.small {
+  padding: 8px 15px;
+  font-size: 0.9rem;
+}
+
+
+/* --- Styles for Notification List --- */
+
+.notification-list-container {
+  max-width: 800px;
+}
+
+.notification-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden; /* To clip the border-radius */
+}
+
+.notification-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 20px;
+  border-bottom: 1px solid #eee;
+  background-color: #fff;
+  transition: background-color 0.2s;
+}
+
+.notification-item:last-child {
+  border-bottom: none;
+}
+
+.notification-item.unread {
+  background-color: #f0f2f5; /* Light blue/grey for unread */
+  font-weight: bold;
+}
+
+.notification-item:hover {
+  background-color: #f9f9f9;
+}
+
+.notification-text {
+  flex-grow: 1;
+  color: #333;
+}
+
+.notification-time {
+  flex-shrink: 0;
+  margin-left: 20px;
+  font-size: 0.9rem;
+  color: #777;
+}
+
+/* Add this to src/pages/PageContent.css */
+
+.form-group small {
+  display: block;
+  margin-top: 5px;
+  font-size: 0.9rem;
+  color: #777;
+}
+
+/* Make read-only inputs look different */
+.form-group input[readOnly] {
+  background-color: #eee;
+  cursor: not-allowed;
+}
