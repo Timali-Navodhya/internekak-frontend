@@ -1,16 +1,16 @@
-// company/src/pages/LoginPage.jsx
+// student/src/pages/LoginPage.jsx
 
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext'; // <-- 1. Import useAuth
+import { useAuth } from '../context/AuthContext'; // 1. Import useAuth
 import './AuthPages.css'; 
 
 function LoginPage() {
   const { register, handleSubmit, formState: { errors } } = useForm();
   const navigate = useNavigate();
   const [apiError, setApiError] = useState(null);
-  const { login } = useAuth(); // <-- 2. Get the login function
+  const { login } = useAuth(); // 2. Get the login function from context
 
   const onSubmit = async (data) => {
     setApiError(null);
@@ -19,23 +19,19 @@ function LoginPage() {
       await login(data.email, data.password);
       
       // 4. Navigate on success
-      navigate('/dashboard');
-
+      navigate('/'); // Navigate to student dashboard
     } catch (err) {
-      console.error('Login failed:', err);
-      setApiError(err.response?.data?.message || 'Login failed. Please try again.');
+      setApiError(err.response?.data?.message || 'Login failed.');
     }
   };
 
   return (
     <div className="auth-container">
       <form className="auth-form" onSubmit={handleSubmit(onSubmit)}>
-        <h2>Sign In to InternEkak</h2>
-        <p>Welcome back! Sign in to continue</p>
-
+        <h2>Student Portal Login</h2>
+        
         {apiError && <div className="error-banner">{apiError}</div>}
 
-        {/* 5. Changed 'username' to 'email' to match API */}
         <div className="form-group">
           <label>Email*</label>
           <input
@@ -53,13 +49,13 @@ function LoginPage() {
           />
           {errors.password && <p className="error-message">{errors.password.message}</p>}
         </div>
-        
+
         <button type="submit" className="auth-button">Sign In</button>
-      
+        
+        <div className="auth-links">
+          <p>Don't have an account? <Link to="/register">Register now</Link></p>
+        </div>
       </form>
-      
-      <p>Don't have an account? <Link to="/register">Sign up now</Link></p>
-      <a href="/reset-password">Forgot password?</a>
     </div>
   );
 }

@@ -1,8 +1,12 @@
+// company/src/main.jsx
+
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { AuthProvider } from './context/AuthContext'; // <-- 1. IMPORT
+import ProtectedRoute from './components/ProtectedRoute';
 
-// --- Our New Layout ---
+// --- Layout ---
 import DashboardLayout from './components/DashboardLayout';
 
 // --- Auth Pages ---
@@ -12,15 +16,15 @@ import ResetPasswordPage from './pages/ResetPasswordPage';
 import VerifyAccountPage from './pages/VerifyAccountPage';
 import CompanyProfilePage from './pages/CompanyProfilePage';
 
-// --- App Pages (will be rendered inside the layout) ---
-import DashboardPage from './pages/DashboardPage'; // CORRECTED
+// --- App Pages ---
+import DashboardPage from './pages/DashboardPage';
 import NotificationsPage from './pages/NotificationsPage';
 import MessagePage from './pages/MessagePage';
-import ContactSupportPage from './pages/ContactSupportPage'; // CORRECTED
+import ContactSupportPage from './pages/ContactSupportPage';
 import PostVacancyPage from './pages/PostVacancyPage';
 import InterviewAllocationsPage from './pages/InterviewAllocationsPage';
 import ReceiveApplicationsPage from './pages/ReceiveApplicationsPage';
-import InterviewPage from './pages/InterviewPage'; // CORRECTED
+import InterviewPage from './pages/InterviewPage';
 import ReschedulePage from './pages/ReschedulePage';
 import ProfileEditingPage from './pages/ProfileEditingPage';
 
@@ -28,35 +32,42 @@ import ProfileEditingPage from './pages/ProfileEditingPage';
 import './index.css';
 
 const router = createBrowserRouter([
-  // Auth Routes (they do NOT use the layout)
+  // ... (all your existing routes)
   { path: '/login', element: <LoginPage /> },
   { path: '/register', element: <RegisterPage /> },
   { path: '/register/profile', element: <CompanyProfilePage /> },
   { path: '/reset-password', element: <ResetPasswordPage /> },
   { path: '/verify-account', element: <VerifyAccountPage /> },
-  
-  // App Routes (ALL of these will be rendered inside the DashboardLayout)
   {
     path: '/',
-    element: <DashboardLayout />,
+    element: <ProtectedRoute />, // <-- THIS IS THE CHANGE
     children: [
-      { path: '/', element: <DashboardPage /> }, // Home page
-      { path: '/dashboard', element: <DashboardPage /> },
-      { path: '/notifications', element: <NotificationsPage /> },
-      { path: '/messages', element: <MessagePage /> },
-      { path: '/support', element: <ContactSupportPage /> },
-      { path: '/post-vacancy', element: <PostVacancyPage /> },
-      { path: '/allocations', element: <InterviewAllocationsPage /> },
-      { path: '/applications', element: <ReceiveApplicationsPage /> },
-      { path: '/interview', element: <InterviewPage /> },
-      { path: '/reschedule', element: <ReschedulePage /> },
-      { path: '/profile-edit', element: <ProfileEditingPage /> },
+      { 
+        path: '/', 
+        element: <DashboardLayout />,
+        children: [
+          { index: true, element: <DashboardPage /> },
+          { path: 'dashboard', element: <DashboardPage /> }, // <-- No slashes
+          { path: 'notifications', element: <NotificationsPage /> },
+          { path: 'messages', element: <MessagePage /> },
+          { path: 'support', element: <ContactSupportPage /> },
+          { path: 'post-vacancy', element: <PostVacancyPage /> },
+          { path: 'allocations', element: <InterviewAllocationsPage /> },
+          { path: 'applications', element: <ReceiveApplicationsPage /> },
+          { path: 'interview', element: <InterviewPage /> },
+          { path: 'reschedule', element: <ReschedulePage /> },
+          { path: 'profile-edit', element: <ProfileEditingPage /> },
+        ]
+      }
     ]
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    {/* 2. WRAP YOUR APP */}
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </React.StrictMode>
 );

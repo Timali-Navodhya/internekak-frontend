@@ -1,41 +1,33 @@
-// company/src/pages/LoginPage.jsx
+// admin/src/pages/LoginPage.jsx
 
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext'; // <-- 1. Import useAuth
-import './AuthPages.css'; 
+import { useAuth } from '../context/AuthContext'; // 1. Import
+import './AuthPages.css';
 
 function LoginPage() {
   const { register, handleSubmit, formState: { errors } } = useForm();
   const navigate = useNavigate();
   const [apiError, setApiError] = useState(null);
-  const { login } = useAuth(); // <-- 2. Get the login function
+  const { login } = useAuth(); // 2. Get login function
 
   const onSubmit = async (data) => {
     setApiError(null);
     try {
-      // 3. Call the login function from context
+      // 3. Call context login
       await login(data.email, data.password);
-      
-      // 4. Navigate on success
-      navigate('/dashboard');
-
+      navigate('/dashboard'); // Navigate to admin dashboard
     } catch (err) {
-      console.error('Login failed:', err);
-      setApiError(err.response?.data?.message || 'Login failed. Please try again.');
+      setApiError(err.response?.data?.message || 'Login failed.');
     }
   };
 
   return (
     <div className="auth-container">
       <form className="auth-form" onSubmit={handleSubmit(onSubmit)}>
-        <h2>Sign In to InternEkak</h2>
-        <p>Welcome back! Sign in to continue</p>
-
+        <h2>Admin Portal Login</h2>
         {apiError && <div className="error-banner">{apiError}</div>}
-
-        {/* 5. Changed 'username' to 'email' to match API */}
         <div className="form-group">
           <label>Email*</label>
           <input
@@ -44,7 +36,6 @@ function LoginPage() {
           />
           {errors.email && <p className="error-message">{errors.email.message}</p>}
         </div>
-
         <div className="form-group">
           <label>Password*</label>
           <input
@@ -53,13 +44,8 @@ function LoginPage() {
           />
           {errors.password && <p className="error-message">{errors.password.message}</p>}
         </div>
-        
         <button type="submit" className="auth-button">Sign In</button>
-      
       </form>
-      
-      <p>Don't have an account? <Link to="/register">Sign up now</Link></p>
-      <a href="/reset-password">Forgot password?</a>
     </div>
   );
 }

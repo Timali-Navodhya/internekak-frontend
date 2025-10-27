@@ -209,8 +209,94 @@
   cursor: not-allowed;
 }
 
+/* Add this to admin/src/pages/PageContent.css */
 
-/* Add this to company/src/pages/PageContent.css if missing */
+.table-title {
+  font-size: 1.5rem;
+  margin-top: 30px;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.data-table th,
+.data-table td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.data-table th {
+  background-color: #f9f9f9;
+  font-weight: bold;
+  color: #555;
+}
+
+.data-table tr:last-child td {
+  border-bottom: none;
+}
+
+.data-table tr:hover {
+  background-color: #fdfdfd;
+}
+
+.table-actions {
+  display: flex;
+  gap: 5px;
+}
+
+/* We need to re-add this from the company project */
+.form-button.small {
+  padding: 8px 15px;
+  font-size: 0.9rem;
+}
+
+.form-button.small.danger {
+  background-color: #e74c3c;
+}
+.form-button.small.danger:hover {
+  background-color: #c0392b;
+}
+
+/* Add this to admin/src/pages/PageContent.css */
+
+.status-badge {
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.status-badge.status-active {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.status-badge.status-inactive {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.status-badge.status-closed {
+  background-color: #e2e3e5;
+  color: #383d41;
+}
+
+/* Add this to admin/src/pages/PageContent.css */
 
 .analytics-grid {
   display: grid;
@@ -239,32 +325,13 @@
   font-size: 1rem;
 }
 
-.analytics-card ul { /* If you add lists later */
+.analytics-card ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-.analytics-card li { /* If you add lists later */
+.analytics-card li {
   margin-bottom: 8px;
   font-size: 0.95rem;
-}
-
-/* Ensure small buttons have margin if needed */
-.analytics-card .form-button.small {
-    margin-top: 10px;
-    margin-right: 5px; /* Add spacing between buttons */
-}
-
-/* Optional styles for link editing in table */
-.link-edit-container {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap; /* Allow wrapping on small screens */
-  gap: 5px;
-}
-.link-display-container {
-   display: flex;
-   align-items: center;
-   gap: 5px;
 }

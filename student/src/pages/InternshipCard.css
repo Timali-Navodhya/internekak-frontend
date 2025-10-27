@@ -1,0 +1,110 @@
+/* student/src/pages/InternshipCard.css */
+
+.search-bar-container {
+  display: flex;
+  margin-bottom: 30px;
+  gap: 10px;
+}
+.search-bar-container input {
+  flex-grow: 1;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.internship-list {
+  display: grid;
+  gap: 20px;
+}
+
+.internship-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.2s;
+}
+.internship-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.card-title {
+  font-size: 1.5rem;
+  margin: 0 0 5px;
+  color: #3b5998;
+}
+
+.card-company {
+  font-size: 1.1rem;
+  font-weight: normal;
+  color: #555;
+  margin: 0 0 10px;
+}
+
+.card-location {
+  font-size: 1rem;
+  color: #777;
+  margin-bottom: 15px;
+}
+
+.card-description {
+  font-size: 0.95rem;
+  color: #333;
+  line-height: 1.5;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  border-top: 1px solid #f0f0f0;
+  padding-top: 15px;
+}
+
+.card-type {
+  background-color: #e9ebee;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+/* Add this to student/src/pages/InternshipCard.css */
+
+.job-detail-header {
+  box-shadow: none;
+  border-bottom: 2px solid #f0f0f0;
+  border-radius: 0;
+  padding: 0 0 20px 0;
+}
+.job-detail-header:hover {
+  box-shadow: none;
+}
+.job-detail-header .card-title {
+  font-size: 2.2rem;
+}
+.job-detail-header .card-company {
+  font-size: 1.4rem;
+}
+
+.job-detail-content {
+  padding: 20px 0;
+}
+.job-detail-content h3 {
+  font-size: 1.3rem;
+  color: #333;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 5px;
+  margin-top: 25px;
+}
+.job-detail-content p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #444;
+  /* Preserve whitespace/newlines from the description */
+  white-space: pre-wrap; 
+}

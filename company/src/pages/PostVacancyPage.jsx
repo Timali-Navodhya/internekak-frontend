@@ -1,4 +1,4 @@
-// src/pages/PostVacancyPage.jsx
+// company/src/pages/PostVacancyPage.jsx
 
 import React from 'react';
 import { useForm } from 'react-hook-form';
@@ -8,35 +8,25 @@ import './PageContent.css'; // Re-use the same CSS
 function PostVacancyPage() {
   const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
+  // This is the updated, functional onSubmit
   const onSubmit = async (data) => {
     console.log('New Vacancy Data:', data);
 
-    // TODO: Connect to your backend
-    // try {
-    //   // TODO: Get auth token
-    //   // const token = localStorage.getItem('token');
-    //   // const config = {
-    //   //   headers: { Authorization: `Bearer ${token}` }
-    //   // };
-    //
-    //   const response = await axios.post(
-    //     'http://localhost:5000/api/company/vacancy', // Your postVacancy endpoint
-    //     data,
-    //     // config
-    //   );
-    //   
-    //   console.log('Vacancy posted:', response.data);
-    //   alert('Vacancy posted successfully!');
-    //   reset(); // Clear the form
-    //
-    // } catch (err) {
-    //   console.error('Failed to post vacancy:', err);
-    //   alert('Error: ' + err.response?.data?.message || 'Could not post vacancy');
-    // }
+    try {
+      // The auth token is now sent automatically by our AuthContext
+      const response = await axios.post(
+        'http://localhost:5001/api/companies/vacancies', // Correct port and plural route
+        data
+      );
+      
+      console.log('Vacancy posted:', response.data);
+      alert('Vacancy posted successfully!');
+      reset(); // Clear the form
     
-    // For testing without backend:
-    alert('Vacancy submitted! Check the console.');
-    reset();
+    } catch (err) {
+      console.error('Failed to post vacancy:', err);
+      alert('Error: ' + (err.response?.data?.message || 'Could not post vacancy'));
+    }
   };
 
   return (

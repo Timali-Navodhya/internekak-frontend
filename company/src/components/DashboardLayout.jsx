@@ -1,37 +1,42 @@
-// src/components/DashboardLayout.jsx
+// company/src/components/DashboardLayout.jsx
 
 import React from 'react';
-import { Outlet, Link } from 'react-router-dom';
-
-// We'll create this CSS file next
-import './DashboardLayout.css'; 
+import { Outlet, Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext'; // 1. Import
+import './DashboardLayout.css';
 
 function DashboardLayout() {
+  const { logout } = useAuth(); // 2. Get logout function
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    navigate('/login'); // Redirect to login after logout
+  };
+
   return (
     <div className="dashboard-layout">
       
-      {/* --- TOP HEADER --- */}
-      {/* --- TOP HEADER --- */}
-<header className="dashboard-header">
-  <div className="header-left">
-    <span className="header-logo">INTERNEKAK.IK</span>
-    <a href="#">Services</a>
-    <a href="#">Help</a>
-  </div>
-  <div className="header-right">
-    {/* Icons are now links */}
-    <span className="header-icon">🔍</span> {/* Search icon - no link for now */}
-    <Link to="/notifications" className="header-icon">🔔</Link>
-    <Link to="/messages" className="header-icon">💬</Link>
-    
-    <span className="header-user">IFS</span>
-    <Link to="/login" className="header-logout">Logout</Link>
-  </div>
-</header>
+      <header className="dashboard-header">
+        <div className="header-left">
+          <span className="header-logo">INTERNEKAK.IK</span>
+          <a href="#">Services</a>
+          <a href="#">Help</a>
+        </div>
+        <div className="header-right">
+          <Link to="/notifications" className="header-icon">🔔</Link>
+          <Link to="/messages" className="header-icon">💬</Link>
+          <span className="header-user">IFS</span>
 
+          {/* 3. Change Link to button with onClick */}
+          <button onClick={handleLogout} className="header-logout">
+            Logout
+          </button>
+        </div>
+      </header>
+
+      {/* ... (rest of the file is the same) ... */}
       <div className="dashboard-body">
-        
-        {/* --- LEFT SIDEBAR --- */}
         <aside className="dashboard-sidebar">
           <h3>Navigation</h3>
           <ul>
@@ -44,20 +49,14 @@ function DashboardLayout() {
             <li><Link to="/profile-edit">Profile Editing</Link></li>
           </ul>
         </aside>
-
-        {/* --- MAIN CONTENT AREA --- */}
         <main className="dashboard-content">
-          {/* This Outlet is where your pages (DashboardPage, etc.) will be rendered */}
           <Outlet />
         </main>
       </div>
-
-      {/* --- BOTTOM FOOTER --- */}
       <footer className="dashboard-footer">
         <Link to="/support">Contact site support</Link>
         <p>You are logged in as IFS</p>
       </footer>
-
     </div>
   );
 }

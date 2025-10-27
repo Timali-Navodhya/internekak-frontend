@@ -1,30 +1,30 @@
-// company/src/pages/RegisterPage.jsx
+// student/src/pages/RegisterPage.jsx
 
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext'; // <-- 1. Import useAuth
-import './AuthPages.css';
+import { useAuth } from '../context/AuthContext'; // 1. Import useAuth
+import './AuthPages.css'; 
 
 function RegisterPage() {
-  // 2. Rename 'register' from react-hook-form to avoid conflict
+  // 2. Rename 'register' to 'formRegister' to avoid conflict
   const { register: formRegister, handleSubmit, formState: { errors } } = useForm();
   const navigate = useNavigate();
   const [apiError, setApiError] = useState(null);
   
-  // 3. Get the 'register' function from our AuthContext
+  // 3. Get the 'register' function from context
   const { register: authRegister } = useAuth();
 
   const onSubmit = async (data) => {
     setApiError(null);
-    console.log('Registration data:', data);
+    console.log('Student Registration data:', data);
 
     try {
-      // 4. Call the register function from context
+      // 4. Call the context register function
       await authRegister(data);
-
-      // 5. Navigate to the dashboard (we'll do profile setup later)
-      navigate('/dashboard');
+      
+      alert('Registration successful! Please log in.');
+      navigate('/login'); // Navigate to login page
 
     } catch (err) {
       console.error('Registration failed:', err);
@@ -35,48 +35,35 @@ function RegisterPage() {
   return (
     <div className="auth-container">
       <form className="auth-form" onSubmit={handleSubmit(onSubmit)}>
-        <h2>Welcome!</h2>
+        <h2>Create Student Account</h2>
         
         {apiError && <div className="error-banner">{apiError}</div>}
 
         <div className="form-group">
-          <label>Company Name*</label>
+          <label>Full Name*</label>
+          {/* 5. Use 'formRegister' here */}
           <input {...formRegister('name', { required: 'Name is required' })} />
           {errors.name && <p className="error-message">{errors.name.message}</p>}
         </div>
 
         <div className="form-group">
           <label>Email*</label>
+          {/* 5. Use 'formRegister' here */}
           <input type="email" {...formRegister('email', { required: 'Email is required' })} />
           {errors.email && <p className="error-message">{errors.email.message}</p>}
         </div>
 
         <div className="form-group">
           <label>Password*</label>
+          {/* 5. Use 'formRegister' here */}
           <input type="password" {...formRegister('password', { required: 'Password is required' })} />
           {errors.password && <p className="error-message">{errors.password.message}</p>}
         </div>
-        
-        {/* Your backend needs these fields, so we must include them */}
-        <div className="form-group">
-          <label>Address*</label>
-          <input {...formRegister('address', { required: 'Address is required' })} />
-          {errors.address && <p className="error-message">{errors.address.message}</p>}
-        </div>
 
         <div className="form-group">
-          <label>Telephone*</label>
-          <input type="tel" {...formRegister('telephone', { required: 'Telephone is required' })} />
-          {errors.telephone && <p className="error-message">{errors.telephone.message}</p>}
-        </div>
-
-        <div className="form-group-checkbox">
-          <input
-            type="checkbox"
-            {...formRegister('termsAccepted', { required: 'You must accept the terms' })}
-          />
-          <label>Agree to all Terms & Conditions</label>
-          {errors.termsAccepted && <p className="error-message">{errors.termsAccepted.message}</p>}
+          <label>Institute</label>
+          {/* 5. Use 'formRegister' here */}
+          <input {...formRegister('institute')} />
         </div>
 
         <button type="submit" className="auth-button">Register</button>

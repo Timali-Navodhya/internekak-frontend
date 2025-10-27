@@ -1,0 +1,252 @@
+/* student/src/pages/PageContent.css */
+
+/* --- General Page Styles --- */
+.page-container {
+  background-color: #ffffff;
+  padding: 20px 30px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.page-header {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+  margin-top: 0;
+  margin-bottom: 25px;
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 10px;
+}
+
+/* --- Form Styles --- */
+.form-layout {
+  max-width: 700px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #555;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"],
+.form-group input[type="url"],
+.form-group input[type="number"],
+.form-group textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 1rem;
+}
+
+.form-group textarea {
+  min-height: 100px;
+  font-family: Arial, sans-serif;
+  resize: vertical;
+}
+
+.form-group .form-select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 1rem;
+  background-color: white;
+  appearance: none;
+  background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E');
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: .65em auto;
+  padding-right: 2.5em;
+}
+
+.form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.form-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  background-color: #3b5998;
+  color: white;
+  transition: background-color 0.2s ease;
+}
+
+.form-button.secondary {
+  background-color: #8b9dc3;
+}
+
+.form-button:hover {
+  opacity: 0.9;
+}
+
+.form-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.error-message {
+  color: #e74c3c;
+  font-size: 0.9rem;
+  margin-top: 5px;
+}
+
+.required-indicator {
+  color: #e74c3c;
+  margin-left: 5px;
+}
+
+.form-group small {
+  display: block;
+  margin-top: 5px;
+  font-size: 0.9rem;
+  color: #777;
+}
+
+.form-group input[readOnly] {
+  background-color: #eee;
+  cursor: not-allowed;
+  color: #555;
+}
+
+/* --- Styles for Tables --- */
+
+.table-title {
+  font-size: 1.5rem;
+  margin-top: 30px;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.data-table th,
+.data-table td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #f0f0f0;
+  vertical-align: middle;
+}
+
+.data-table th {
+  background-color: #f9f9f9;
+  font-weight: bold;
+  color: #555;
+  text-transform: uppercase;
+  font-size: 0.9em;
+}
+
+.data-table tr:last-child td {
+  border-bottom: none;
+}
+
+.data-table tr:hover {
+  background-color: #fdfdfd;
+}
+
+.table-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+/* Smaller button variant */
+.form-button.small {
+  padding: 8px 15px;
+  font-size: 0.9rem;
+}
+
+/* Danger button variant */
+.form-button.danger {
+  background-color: #e74c3c;
+}
+.form-button.danger:hover {
+  background-color: #c0392b;
+}
+
+/* Status Badges */
+.status-badge {
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  text-transform: capitalize;
+  display: inline-block;
+}
+
+.status-badge.status-active,
+.status-badge.status-pending,
+.status-badge.status-paid { /* Greenish */
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.status-badge.status-inactive,
+.status-badge.status-rejected,
+.status-badge.status-unpaid { /* Reddish */
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.status-badge.status-closed,
+.status-badge.status-shortlisted,
+.status-badge.status-expired { /* Greyish */
+  background-color: #e2e3e5;
+  color: #383d41;
+}
+
+/* --- AI Suggestions Box --- */
+.ai-suggestions {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #f0f2f5;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+.ai-suggestions h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: #3b5998;
+  font-size: 1.1rem;
+}
+.ai-suggestions pre {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  font-family: inherit;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}

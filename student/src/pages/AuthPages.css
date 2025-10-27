@@ -396,22 +396,3 @@
     font-size: 1.4rem;
   }
 }
-
-/* Add this to company/src/pages/AuthPages.css */
-
-.form-group-checkbox {
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.form-group-checkbox input {
-  width: auto;
-  margin-right: 10px;
-}
-
-.form-group-checkbox label {
-  margin-bottom: 0;
-  font-weight: normal;
-  font-size: 0.9rem;
-}
